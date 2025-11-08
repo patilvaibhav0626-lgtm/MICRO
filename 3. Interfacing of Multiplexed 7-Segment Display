@@ -21,6 +21,7 @@ P2 = seg_code [i];
 delay();
 
 
+
 2) For 00 to 99 display:- 
 #include<reg51.h> 
 #define SegTwo 0X02 
