@@ -1,0 +1,73 @@
+#include<p18f4520.h> 
+#pragma config OSC=HS 
+#pragma config PWRT=OFF 
+#pragma config WDT=OFF 
+#pragma config DEBUG=OFF, LVP=OFF 
+void msdelay(unsigned int itime); 
+void Right(void); 
+void Left(void); 
+#define Relay PORTDbits.RD2 
+#define BUZZER  PORTDbits.RD3 
+#define SW1   PORTDbits.RD0 
+#define SW2   PORTDbits.RD1 
+#define LD1   PORTDbits.RD4 
+#define LD2   PORTDbits.RD5 
+#define LD3   PORTDbits.RD6 
+#define LD4   PORTDbits.RD7 
+unsigned int i,data; 
+void main() 
+{      
+TRISD=0x03; 
+ADCON1=0x0F; 
+PORTD=0x00; 
+    Relay=0; 
+    BUZZER =0; 
+ while(1) 
+ {  
+  if(SW1==0)  
+    Left();   
+  if(SW2==0)     
+    Right();  
+ } 
+} 
+void Right(void) 
+{  
+  Relay=1; BUZZER =0; 
+  while(SW1!=0)  
+  { 
+ if(SW1==0) 
+ Left(); 
+ LD1=1;LD2=0;LD3=0;LD4=0;Relay=0; 
+ msdelay(30); 
+ LD1=0;LD2=1;LD3=0;LD4=0;Relay=0; 
+ msdelay(30); 
+ LD1=0;LD2=0;LD3=1;LD4=0;Relay=0; 
+ msdelay(30); 
+ LD1=0;LD2=0;LD3=0;LD4=1;Relay=0; 
+ msdelay(30);  
+  } 
+} 
+void Left(void) 
+{ 
+}                                                                                                                       
+Relay=0; 
+BUZZER =1;    
+while(SW2!=0) 
+{ 
+} 
+if(SW2==0) 
+Right(); 
+LD1=0;LD2=0;LD3=0;LD4=1;Relay=1;   
+msdelay(30); 
+LD1=0;LD2=0;LD3=1;LD4=0;Relay=1;   
+msdelay(30); 
+LD1=0;LD2=1;LD3=0;LD4=0;Relay=1;   
+msdelay(30); 
+LD1=1;LD2=0;LD3=0;LD4=0;Relay=1;   
+msdelay(30);     
+void msdelay (unsigned int itime) 
+{ 
+} 
+int i,j; 
+for(i=0;i<itime;i++) 
+for(j=0;j<1275;j++);
