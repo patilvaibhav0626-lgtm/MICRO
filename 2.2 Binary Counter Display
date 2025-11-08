@@ -28,4 +28,4 @@ void delay(void)
     { 
         for(k = 0; k < 100; k++); // Inner loop for time delay 
     } 
-}
+} 
