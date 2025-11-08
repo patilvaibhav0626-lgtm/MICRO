@@ -1,5 +1,5 @@
-BCD
-
+BCD  
+ 
 #include <reg51.h>    // Header file for 8051 microcontroller 
 void delay();         // Function declaration 
 void main() 
@@ -22,4 +22,4 @@ void delay()
     { 
         for(k = 0; k < 100; k++); // Inner delay loop (semicolon important) 
     } 
-}
+} 
