@@ -1,0 +1,60 @@
+1) For 00 to 09 display:- 
+#include <reg51.h> 
+void delay() 
+{ 
+} 
+unsigned int i, j; 
+for(i=0;i<1000;i++) 
+for(j=0;j<1275;j++); 
+void main() 
+{ 
+unsigned char seg_code [10],i = {0xC0 ,0xF9 ,0xA4 ,0xB0 ,0x99 ,0x92 ,0x82 ,0xF8 ,0x80 
+,0x90 };    
+while(1) 
+{ 
+for(i=0; i<10; i++) 
+{ 
+} 
+} 
+} 
+P2 = seg_code [i];     
+delay();
+
+
+2) For 00 to 99 display:- 
+#include<reg51.h> 
+#define SegTwo 0X02 
+#define SegOne 0x01 
+void DELAY_ms (unsigned int ms_Count) 
+{ 
+   unsigned int i,j; 
+      for (i=0;i<ms_Count;i++) 
+       { 
+         for (j=0;j<50;j++); 
+       } 
+} 
+   int main() 
+{ 
+   char seg_code[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90}; 
+   int i,j,c; 
+    while(1) 
+       { 
+                for(i=0;i<10;i++) 
+                 { 
+                     for(j=0;j<=10;j++) 
+                      { 
+                         for(c=0;c<100;c++) 
+                           { 
+                                       P1=SegTwo; 
+                                       P0=seg_code[j]; 
+                                       DELAY_ms(2); 
+ 
+ 
+                                       P1=SegOne; 
+                                       P0=seg_code[i]; 
+                                      DELAY_ms(2); 
+                                 } 
+                     } 
+           } 
+    } 
+}
